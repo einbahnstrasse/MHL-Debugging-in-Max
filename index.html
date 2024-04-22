@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Debugging in Max | Synthesis Techniques</title>
+		<title>Max Debugging | Synthesis Techniques</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
@@ -21,8 +21,8 @@
 				<section>
 					<svg > 
 						<symbol id="s-text">
-							<text text-anchor="middle" x="50%" y="80%">Debugging in Max</text>
-							<text text-anchor="middle" x="51%" y="81%">Debugging in Max</text>
+							<text text-anchor="middle" x="50%" y="80%">Max Debugging</text>
+							<text text-anchor="middle" x="51%" y="81%">Max Debugging</text>
 						</symbol>
 						<g class = "g-ants">
 							<use xlink:href="#s-text" class="text-copy"></use>
@@ -32,7 +32,7 @@
 							<use xlink:href="#s-text" class="text-copy"></use>
 						</g>
 					</svg>
-					<h5 style="position:absolute;right:10px;" class="fade-in-text">Physical Modeling — Dr. Louis Goldford (2024)</h5>
+					<h5 style="position:absolute;right:10px;" class="fade-in-text">Synthesis Techniques — Dr. Louis Goldford (2024)</h5>
 				</section>
 
 				<!-- TOC -->
@@ -42,28 +42,173 @@
 				<section data-auto-animate>
 					<h5 style="text-align: left;">These slides will discuss:</h5>
 					<div style="font-size: 0.65em; text-align: left;" data-auto-animate-id="list">
-						<h6>What is  <span class="gen">gen~</span>?</h6>
-						<h6 class="fragment">What is JIT compiling?</h6>
-						<h6 class="fragment">Signal Vectors</h6>
-						<h6 class="fragment">Why Do We Need <span class="gen">gen~</span>?</h6>
-						<h6 class="fragment">What Can We Make in <span class="gen">gen~</span> That We Can't Make in MSP?</h6>
-						<h6 class="fragment">How is Patching in <span class="gen">gen~</span> Different From MSP?</h6> 
-						<h6 class="fragment">How To Go From Filter Topology To <span class="gen">gen~</span> Operators</h6> 
-
+						<h6><em>You guessed it...</em></h6>
+						<div class="fragment">
+							<h2>Debugging</h2>
+							<img data-src="img/bug.png" width="25%" class="jitter-bug" alt="bug!">  
+						</div>
 					</div>
 				</section>
 
-				<!-- what is gen? -->
+				<!-- what is debugging? -->
 				<section class="special-slide" data-auto-animate>
 					<div class="special-header">
-						<h4>What is <span class="gen">gen~</span>?</h4>
+						<h4>What Is Debugging?</h4>
 					</div>
 					<div class="special-body">
-						<p class="fragment"><span class="gen">gen~</span> is another type of <strong>subpatch</strong> in MaxMSP,</p>  
-						<p class="fragment">much like the subpatches you already know:</p> 
-						<p class="fragment"><span class="gen">p</span>, <span class="gen">poly~</span>, and <span class="gen">pfft~</span></p>
+						<p class="fragment"><em><strong>Debugging</strong> is...</em></p>  
+						<blockquote class="fragment" style="font-size: 0.75em;">
+							<em>“the process of finding and resolving <strong>bugs</strong> (<strong>defects or problems</strong> that prevent correct operation) within computer programs, software, or systems.”</em>
+							<p>—<a href="https://en.wikipedia.org/wiki/Debugging" target="_blank">Wikipedia</a></p>
+						</blockquote>
 					</div>
 				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>What Is Debugging?</h4>
+					</div>
+					<div class="special-body">
+						<p>But it can also be thought of as...</p>  
+						<p class="fragment"><em>a process of identifying</em></p>
+						<ul>
+							<li class="fragment">what <strong>variables</strong></li>
+							<li class="fragment">hold what <strong>values</strong></li>
+							<li class="fragment">at what <strong>point in time</strong>.</li>
+						</ul>
+						<p class="fragment">—Rebecca Hill,<br>Debugging Specialist<br>JavaScript Developer<br><em>WeTransfer.com</em></p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>What Is Debugging?</h4>
+					</div>
+					<div class="special-body">
+						<p>In MaxMSP, this can also be extended to...</p>  
+						<p class="fragment"><em>a process of identifying</em></p>
+						<p class="fragment">which <strong>object boxes</strong> and <strong>patch cables</strong></p>
+						<img class="fragment" data-src="img/patch.01.objects.cables.png" width="50%" alt="boxes + cables">  
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>What Is Debugging?</h4>
+					</div>
+					<div class="special-body">
+						<p>In MaxMSP, this can also be extended to...</p>  
+						<p><em>a process of identifying</em></p>
+						<p>which <strong>object boxes</strong> and <strong>patch cables</strong></p>
+						<p>are carrying specific <strong>signal and message values</strong></p>	
+						<img class="fragment" data-src="img/patch.02.message.types.png" width="50%" alt="boxes + cables">  
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>What Is Debugging?</h4>
+					</div>
+					<div class="special-body">
+						<p>In MaxMSP, this can also be extended to...</p>  
+						<p><em>a process of identifying</em></p>
+						<p>which <strong>object boxes</strong> and <strong>patch cables</strong></p>
+						<p>are carrying specific <strong>signal and message values</strong></p>
+						<p>at any <strong>point in time</strong>.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Message Order</h4>
+					</div>
+					<div class="special-body">
+						<p class="fragment">To understand this process better,</p> 
+						<p class="fragment">Let's first discuss the <strong>order of messages</strong> in Max.</p> 
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Message Order</h4>
+					</div>
+					<div class="special-body">
+						<p>By now, you probably realize that data flows <strong>top-to-bottom</strong> in your patch:</p> 
+						<img class="fragment" data-src="img/patch.03.data.flow.png" width="45%" alt="boxes + cables">  
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Message Order</h4>
+					</div>
+					<div class="special-body">
+						<p>But for object boxes that have <strong>more than one</strong> inlet or outlet,</p> 
+						<p class="fragment">data also flows <strong>right-to-left</strong>.</p>
+						<img class="fragment" data-src="img/patch.04.right.to.left.png" width="55%" alt="boxes + cables">  
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Message Order</h4>
+					</div>
+					<div class="special-body">
+						<p><em>When we design our own patches,</em></p> 
+						<p class="fragment"><em>most mistakes (“bugs”) happen</em></p>
+						<div class="fragment">
+							<p ><em>because we <strong>forget the message order</strong>.</em></p>
+							<img data-src="img/bug.png" width="25%" class="jitter-bug" alt="bug!">  
+						</div>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Hot + Cold Inlets</h4>
+					</div>
+					<div class="special-body">
+						<p class="fragment">To help us remember messaging order,</p> 
+						<p class="fragment">look closely at the <strong>colors</strong> of the <strong>inlets</strong> of an object...</p>
+						<img class="fragment" data-src="img/patch.05.cold.inlet.png" width="100%" alt="cold inlet">  
+						<p class="fragment">Hover your mouse over the <strong>right</strong> inlet.</p>
+						<p class="fragment">Notice it is <span style="color:dodgerblue;"><strong>blue</strong></span>.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Hot + Cold Inlets</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.05.cold.inlet.png" width="100%" alt="cold inlet">  
+						<p class="fragment">The <span style="color:dodgerblue;"><strong>blue</strong></span> inlet indicates</p>
+						<p class="fragment">that this is a <span style="color:dodgerblue;"><strong>cold</strong></span> inlet</p>
+						<p class="fragment">because it is on the <span style="color:dodgerblue;"><strong>right</strong></span>.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Hot + Cold Inlets</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.05.cold.inlet.png" width="100%" alt="cold inlet">  
+						<p class="fragment"><span style="color:dodgerblue;"><strong>Cold</strong></span> inlets do <strong>not</strong> trigger output from the object.</p>
+					</div>
+				</section>
+
+
+
+
+
+
+
+
+
+
+
+
 
 				<section class="special-slide" data-auto-animate>
 					<div class="special-header">
