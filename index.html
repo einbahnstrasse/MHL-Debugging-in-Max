@@ -157,7 +157,7 @@
 						<p><em>When we design our own patches,</em></p> 
 						<p class="fragment"><em>most mistakes (“bugs”) happen</em></p>
 						<div class="fragment">
-							<p ><em>because we <strong>forget the message order</strong>.</em></p>
+							<p ><em>because we <strong>forget the message order!</strong></em></p>
 							<img data-src="img/bug.png" width="25%" class="jitter-bug" alt="bug!">  
 						</div>
 					</div>
@@ -169,7 +169,7 @@
 					</div>
 					<div class="special-body">
 						<p class="fragment">To help us remember messaging order,</p> 
-						<p class="fragment">look closely at the <strong>colors</strong> of the <strong>inlets</strong> of an object...</p>
+						<p class="fragment">look closely at the <strong>colors</strong> of an object’s <strong>inlets</strong>...</p>
 						<img class="fragment" data-src="img/patch.05.cold.inlet.png" width="100%" alt="cold inlet">  
 						<p class="fragment">Hover your mouse over the <strong>right</strong> inlet.</p>
 						<p class="fragment">Notice it is <span style="color:dodgerblue;"><strong>blue</strong></span>.</p>
@@ -182,7 +182,7 @@
 					</div>
 					<div class="special-body">
 						<img data-src="img/patch.05.cold.inlet.png" width="100%" alt="cold inlet">  
-						<p class="fragment">The <span style="color:dodgerblue;"><strong>blue</strong></span> inlet indicates</p>
+						<p>The <span style="color:dodgerblue;"><strong>blue</strong></span> inlet indicates</p>
 						<p class="fragment">that this is a <span style="color:dodgerblue;"><strong>cold</strong></span> inlet</p>
 						<p class="fragment">because it is on the <span style="color:dodgerblue;"><strong>right</strong></span>.</p>
 					</div>
@@ -193,8 +193,161 @@
 						<h4>Hot + Cold Inlets</h4>
 					</div>
 					<div class="special-body">
-						<img data-src="img/patch.05.cold.inlet.png" width="100%" alt="cold inlet">  
-						<p class="fragment"><span style="color:dodgerblue;"><strong>Cold</strong></span> inlets do <strong>not</strong> trigger output from the object.</p>
+						<img data-src="img/patch.07.cold.arguments.png" width="50%" alt="cold inlet">  
+						<p class="fragment"><span style="color:dodgerblue;"><strong>Cold</strong></span> inlets do <strong>not</strong> trigger output from an object box.</p>
+						<p class="fragment">Instead, they <strong>replace the argument(s)</strong> of the function typed inside the box.</p>
+						<p class="fragment">For example, if we type a new number in the integer box, it will <strong>replace</strong> the number 4,</p>
+						<p class="fragment">which is the <strong>argument</strong> to the <strong>+</strong> function.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Hot + Cold Inlets</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.08.random.cold.png" width="50%" alt="random.cold">  
+						<p class="fragment">If we set up the patch above,</p>
+						<p class="fragment">the <strong>metro</strong> object will generate a new random number between 0-100 every 200 miliseconds.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Hot + Cold Inlets</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.08.random.cold.png" width="50%" alt="random.cold">  
+						<p>But no matter how many numbers we generate,</p>
+						<p class="fragment">we will <em>never</em> get an output from the <strong>+</strong> function...</p>
+						<p class="fragment">because the numbers are only feeding its <span style="color:dodgerblue;"><strong>cold</strong></span> inlet.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Hot + Cold Inlets</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.06.hot.inlet.png" width="100%" alt="hot inlet">  
+						<p>Next, hover your mouse over the <strong>left</strong> inlet.</p>
+						<p class="fragment">Notice it is <span style="color:red;"><strong>red</strong></span>.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Hot + Cold Inlets</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.06.hot.inlet.png" width="100%" alt="hot inlet">  
+						<p>The <span style="color:red;"><strong>red</strong></span> inlet indicates</p>
+						<p class="fragment">that this is a <span style="color:red;"><strong>hot</strong></span> inlet</p>
+						<p class="fragment">because it is on the <span style="color:red;"><strong>left</strong></span>.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Hot + Cold Inlets</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.06.hot.inlet.png" width="100%" alt="hot inlet">  
+						<p>In this case, the <span style="color:red;"><strong>hot</strong></span> inlet <strong>sets the left operand</strong> to the <strong>+</strong> function,</p>
+						<p class="fragment">and most importantly, it <span style="color:red;"><strong>triggers</strong></span> output from the object box.</p>
+						<p class="fragment">In MaxMSP, the <span style="color:red;"><strong>left</strong></span> inlet <strong><em>always</em> triggers output.</strong></p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Hot + Cold Inlets</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.09.trigger.png" width="35%" alt="hot triggers">  
+						<p class="fragment">If we set up the patch above, with a <strong>new</strong> random number process feeding the <span style="color:red;"><strong>hot</strong></span> inlet,</p>
+						<p class="fragment">the <strong>metro</strong> on the <span style="color:red;"><strong>left</strong></span> will generate a random number every <strong>50</strong> miliseconds.</p>
+						<p class="fragment">That’s much <strong>faster</strong> than the <span style="color:dodgerblue;"><strong>cold</strong></span> inlet, which only receives a new number every <strong>200</strong> miliseconds.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Hot + Cold Inlets</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.09.trigger.png" width="35%" alt="hot triggers">  
+						<p class="fragment">The numbers received in the <span style="color:red;"><strong>hot</strong></span> inlet will <strong>always</strong> trigger output,</p>
+						<p class="fragment">in other words, every <strong>50</strong> miliseconds,</p>
+						<p class="fragment">While the numbers on the <span style="color:dodgerblue;"><strong>right</strong></span> update much more <strong>slowly</strong>.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Hot + Cold Inlets</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.09.trigger.png" width="35%" alt="hot triggers">  
+						<p class="fragment">This <strong>snapshot</strong> of the patch above represents a discrete <strong>moment in time</strong>.</p>
+						<p class="fragment">At this moment, the <span style="color:dodgerblue;"><strong>cold</strong></span> cable is carrying a value of <strong>23</strong>,</p>
+						<p class="fragment">while the <span style="color:red;"><strong>hot</strong></span> cable is carrying a value of <strong>77</strong>.</p>
+						<p class="fragment">At this very <strong>moment</strong>, this produces an <strong>output of 100</strong>.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Hot + Cold Inlets</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.09.trigger.png" width="35%" alt="hot triggers">  
+						<p>Because these <strong>streams of numbers</strong> move at different speeds,</p>
+						<p class="fragment">we know that each number feeding the <span style="color:red;"><strong>hot</strong></span> inlet</p>
+						<p class="fragment">will be <strong>added</strong> to the <strong>same</strong> number (in the <span style="color:dodgerblue;"><strong>cold</strong></span> inlet) many times over,</p>
+						<p class="fragment">before a new number <strong>replaces the argument</strong> in the <span style="color:dodgerblue;"><strong>cold</strong></span> inlet.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Monitoring Output</h4>
+					</div>
+					<div class="special-body">
+						<p class="fragment">We can <em>prove</em> this by using the <strong>Max console</strong> to <strong>monitor</strong> our stream of numbers...</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Monitoring Output</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.10.console.png" width="35%" alt="hot triggers">  
+						<p class="fragment">First, if you don't see it, <strong>open your Max console</strong> by choosing Window > Max Console.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Monitoring Output</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.11.print.png" width="35%" alt="hot triggers">  
+						<p class="fragment">In our patch, we can use a <strong>print</strong> object to <strong>monitor</strong> the values in our patch cables</p>
+						<p class="fragment">each time a <span style="color:red;"><strong>hot</strong></span> value triggers output.</p>
+						<p class="fragment">Notice that the <strong>pack</strong> object also has <span style="color:red;"><strong>hot</strong></span> and <span style="color:dodgerblue;"><strong>cold</strong></span> inlets.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Monitoring Output</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.12.console.output.png" width="25%" alt="hot triggers">  
+						<p class="fragment">Now, take a look at your <strong>Max console</strong>.</p>
+						<p class="fragment">We see that the values on the <span style="color:red;"><strong>left</strong></span> are indeed changing <strong>faster</strong> than the values on the <span style="color:dodgerblue;"><strong>right</strong></span>.</p>
 					</div>
 				</section>
 
