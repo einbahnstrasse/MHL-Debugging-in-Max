@@ -196,8 +196,19 @@
 						<img data-src="img/patch.07.cold.arguments.png" width="50%" alt="cold inlet">  
 						<p class="fragment"><span style="color:dodgerblue;"><strong>Cold</strong></span> inlets do <strong>not</strong> trigger output from an object box.</p>
 						<p class="fragment">Instead, they <strong>replace the argument(s)</strong> of the function typed inside the box.</p>
-						<p class="fragment">For example, if we type a new number in the integer box, it will <strong>replace</strong> the number 4,</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Hot + Cold Inlets</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.07.cold.arguments.png" width="50%" alt="cold inlet">  
+						<p>For example, if we type a new number in the integer box, it will <strong>replace</strong> the number 4,</p>
 						<p class="fragment">which is the <strong>argument</strong> to the <strong>+</strong> function.</p>
+						<p class="fragment"><em>...But, curiously, it will <strong>not</strong> trigger output from the <strong>+</strong> function...</em></p>
+
 					</div>
 				</section>
 
@@ -219,7 +230,7 @@
 					<div class="special-body">
 						<img data-src="img/patch.08.random.cold.png" width="50%" alt="random.cold">  
 						<p>But no matter how many numbers we generate,</p>
-						<p class="fragment">we will <em>never</em> get an output from the <strong>+</strong> function...</p>
+						<p class="fragment">we will <em>never</em> get output from the <strong>+</strong> function...</p>
 						<p class="fragment">because the numbers are only feeding its <span style="color:dodgerblue;"><strong>cold</strong></span> inlet.</p>
 					</div>
 				</section>
@@ -256,6 +267,7 @@
 						<p>In this case, the <span style="color:red;"><strong>hot</strong></span> inlet <strong>sets the left operand</strong> to the <strong>+</strong> function,</p>
 						<p class="fragment">and most importantly, it <span style="color:red;"><strong>triggers</strong></span> output from the object box.</p>
 						<p class="fragment">In MaxMSP, the <span style="color:red;"><strong>left</strong></span> inlet <strong><em>always</em> triggers output.</strong></p>
+						<p class="fragment">In other words, output is <strong>triggered any time an input is delivered</strong> to a <span style="color:red;"><strong>left</strong></span> inlet.</p>
 					</div>
 				</section>
 
@@ -314,7 +326,11 @@
 						<h4>Monitoring Output</h4>
 					</div>
 					<div class="special-body">
-						<p class="fragment">We can <em>prove</em> this by using the <strong>Max console</strong> to <strong>monitor</strong> our stream of numbers...</p>
+						<p class="fragment">We can <em>prove</em> this by using the <strong>Max console</strong> to <strong>monitor</strong> our stream of numbers.</p>
+						<p class="fragment">The Max console allows us to view many successive <strong>snapshots</strong>,</p>
+						<p class="fragment">that is, many individual <strong>moments</strong>...</p>
+						<p class="fragment">in order to monitor what <strong>changes over time</strong>.</p>
+
 					</div>
 				</section>
 
@@ -334,9 +350,22 @@
 					</div>
 					<div class="special-body">
 						<img data-src="img/patch.11.print.png" width="35%" alt="hot triggers">  
-						<p class="fragment">In our patch, we can use a <strong>print</strong> object to <strong>monitor</strong> the values in our patch cables</p>
+						<p class="fragment">In our patch, we can use a <strong>print</strong> object to <strong>monitor</strong> the values</p>
+						<p class="fragment">flowing through our patch cables</p>
 						<p class="fragment">each time a <span style="color:red;"><strong>hot</strong></span> value triggers output.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Monitoring Output</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.11.print.png" width="35%" alt="hot triggers">  
 						<p class="fragment">Notice that the <strong>pack</strong> object also has <span style="color:red;"><strong>hot</strong></span> and <span style="color:dodgerblue;"><strong>cold</strong></span> inlets.</p>
+						<p class="fragment">We created <strong>2 arguments</strong> for the <strong>pack</strong> function by typing <strong>f f</strong></p>
+						<p class="fragment">which resulted in <strong>2 inlets</strong>.</p>
+						<p class="fragment">Each <strong>f</strong> represents a <strong>floating-point value</strong> to be received in an inlet.</p>
 					</div>
 				</section>
 
