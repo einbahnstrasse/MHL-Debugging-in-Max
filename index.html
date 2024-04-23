@@ -120,7 +120,7 @@
 
 				<section class="special-slide" data-auto-animate>
 					<div class="special-header">
-						<h4>Message Order</h4>
+						<h4>Message Order — Part I</h4>
 					</div>
 					<div class="special-body">
 						<p class="fragment">To understand this process better,</p> 
@@ -130,17 +130,17 @@
 
 				<section class="special-slide" data-auto-animate>
 					<div class="special-header">
-						<h4>Message Order</h4>
+						<h4>Message Order — Part I</h4>
 					</div>
 					<div class="special-body">
 						<p>By now, you probably realize that data flows <strong>top-to-bottom</strong> in your patch:</p> 
-						<img class="fragment" data-src="img/patch.03.data.flow.png" width="45%" alt="boxes + cables">  
+						<img class="fragment" data-src="img/patch.03a.data.flow.png" width="45%" alt="boxes + cables">  
 					</div>
 				</section>
 
 				<section class="special-slide" data-auto-animate>
 					<div class="special-header">
-						<h4>Message Order</h4>
+						<h4>Message Order — Part I</h4>
 					</div>
 					<div class="special-body">
 						<p>But for object boxes that have <strong>more than one</strong> inlet or outlet,</p> 
@@ -151,7 +151,7 @@
 
 				<section class="special-slide" data-auto-animate>
 					<div class="special-header">
-						<h4>Message Order</h4>
+						<h4>Message Order — Part I</h4>
 					</div>
 					<div class="special-body">
 						<p><em>When we design our own patches,</em></p> 
@@ -377,6 +377,345 @@
 						<img data-src="img/patch.12.console.output.png" width="25%" alt="hot triggers">  
 						<p class="fragment">Now, take a look at your <strong>Max console</strong>.</p>
 						<p class="fragment">We see that the values on the <span style="color:red;"><strong>left</strong></span> are indeed changing <strong>faster</strong> than the values on the <span style="color:dodgerblue;"><strong>right</strong></span>.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Monitoring Output</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.12.console.output.png" width="25%" alt="hot triggers">  
+						<p class="fragment">Using the <strong>Max console</strong> with <strong>print</strong> statements, like this,</p>
+						<p class="fragment">allows us to see things we <strong><em>cannot easily see</em></strong> if we are only looking at our patch.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Monitoring Output</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.03a.data.flow.png" width="35%" alt="hot triggers">  
+						<p class="fragment">For example, remember this simple algorithm we created?</p>
+						<p class="fragment">Here, we can only see the first number, at the top, and the last number, at the bottom.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Monitoring Output</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.03a.data.flow.png" width="35%" alt="hot triggers">  
+						<p>But, what <strong>can’t</strong> we see in this view?</p>
+						<p class="fragment"><em>Answer:</em> We cannot see the <strong>inputs</strong> and <strong>outputs</strong> for the objects in the middle...</p>
+						<p class="fragment">that is, the <strong>[* 5.]</strong> object, and the <strong>[- 8]</strong> object.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Monitoring Output</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.03a.data.flow.png" width="35%" alt="hot triggers">  
+						<p><em>But what if we needed to <strong>monitor</strong> each of these steps?</em></p>
+						<p class="fragment">Let’s create some example data to <strong>test</strong> this algorithm...</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Monitoring Output</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.15.test1.success.png" width="35%" alt="hot triggers">  
+						<p class="fragment">Here, we enter the number <strong>13</strong> in the topmost <strong>flonum</strong> object and press <strong>enter</strong>.</p>
+						<p class="fragment">If we check using a calculator, we can be sure <strong>57</strong> is the expected result.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Monitoring Output</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.16.test2.fail.png" width="35%" alt="hot triggers">  
+						<p class="fragment">Now, let’s test a <strong>decimal</strong> input value. If we run <strong>13.01</strong> at the top...</p>
+						<p class="fragment">We would expect a <strong>floating-point</strong> result...</p>
+						<p class="fragment">And yet, we <strong>still</strong> get a <strong>57</strong>!</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Monitoring Output</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.16.test2.fail.png" width="35%" alt="hot triggers">  
+						<p>If we use our calculator, we know to expect <strong>57.05</strong> instead.</p>
+						<p class="fragment"><em>What’s wrong?!</em></p>
+						<p class="fragment"><em>This is pure chaos...</em></p>
+						<p class="fragment"><em>What <strong>is</strong> this world we’re living in??</em></p>
+						<p class="fragment"><em>I feel sick...</em></p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Monitoring Output</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/bug.png" width="75%" class="jitter-bug" alt="hot triggers">  
+						<p><em>Answer: We found a <strong>bug</strong> in our code.</em></p>
+						<p class="fragment"><em>So... Let’s fix it...</em></p>
+						<p class="fragment"><em>Are you ready to <strong>debug</strong> this <strong>bug</strong>?</em></p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Monitoring Output</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.13.problem.png" width="55%" alt="bug problem">  
+						<p>Our procedure is really simple, in fact...</p>
+						<p class="fragment">Just set up 2 <strong>print</strong> statements</p>
+						<p class="fragment">and <strong>label</strong> them <strong>1st:</strong> and <strong>2nd:</strong></p>
+						<p class="fragment">so we can easily see what is happening at each step...</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Monitoring Output</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.13b.problem.png" width="55%" alt="bug problem">  
+						<p>Now, look at your <strong>Max console</strong>...</p>
+						<p class="fragment">Here, we can see the problem is clearly at the <strong>2nd</strong> step:</p>
+						<p class="fragment">At the <strong>2nd</strong> step, our value <em>changes</em> from a <strong>floating-point</strong> to an <strong>integer</strong>.</p>
+						<p class="fragment">But again, we expect these to be <strong>floating-point values</strong>.</p>
+
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Monitoring Output</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.13a.problem.png" width="55%" alt="bug problem">  
+						<p>So, what is going at our <strong>2nd</strong> stage?</p>
+						<p class="fragment">Upon closer inspection of the <strong>[- 8]</strong> object...</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Monitoring Output</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/bug.png" width="75%" class="jitter-bug" alt="hot triggers">  
+						<p><em>We have <strong>localized</strong> our bug!</em></p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Monitoring Output</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.13a.problem.png" width="55%" alt="bug problem">  
+						<p><em>Answer:</em> We forgot a <strong>dot (.)</strong> after the <strong>argument</strong>.</p>
+						<p class="fragment">So, we just need to change <strong>[- 8]</strong> ...</p>
+						<p class="fragment">to <strong>[- 8.]</strong> ...</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Monitoring Output</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.14.solution.png" width="55%" alt="bug problem">  
+						<p>And when we update our patch,</p>
+						<p class="fragment">and <strong>rerun</strong> the input value of <strong>13.01</strong>, <em>voilà!</em> —</p>
+						<p class="fragment">We have the correct and expected result: an output of <strong>57.05</strong>!</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Monitoring Output</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.14.solution.png" width="55%" alt="bug problem">  
+						<p>Using multiple <strong>print</strong> statements in combination with our <strong>Max console</strong></p>
+						<p class="fragment">teaches us to be <strong>systematic</strong> and <strong>logical</strong> about our coding practice</p>
+						<p class="fragment">in order to obtain the results we want...</p>
+						<p class="fragment">and in order to remain in <strong>control</strong> of our programs.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Message Order — Part II</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.17.up.down.order.png" width="55%" alt="bug problem">  
+						<p class="fragment">We can further use <strong>print</strong> statements </p>
+						<p class="fragment">to <strong>verify</strong> MaxMSP’s sophisticated <strong>messaging order</strong> structure:</p>
+						<p class="fragment">Data flows <strong>right-to-left</strong>,</p>
+						<p class="fragment">But also from <strong>top-to-bottom</strong>...</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Message Order — Part II</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.17a.up.down.order.png" width="55%" alt="bug problem">  
+						<p class="fragment">Notice how it works in <strong>columns</strong> first, followed by <strong>rows</strong>...</p>
+						<p class="fragment">First, print statements <strong>2nd</strong>, <strong>3rd</strong>, and <strong>4th</strong> are triggered in one column on the <span style="color:red;"><strong>far right</strong></span>.</p>
+						<p class="fragment">Then, statements <strong>5th</strong>, <strong>6th</strong>, and <strong>7th</strong> are triggered in the <span style="color:darkorange;"><strong>middle</strong></span>.</p>
+						<p class="fragment">Finally, statements <strong>8th</strong>, <strong>9th</strong>, and <strong>10th</strong> are triggered on the <span style="color:gold;"><strong>left</strong></span>.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Message Order — Part II</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.17a.up.down.order.png" width="55%" alt="bug problem">  
+						<p><em>So, the messaging order is:</em></p>
+						<p class="fragment">Starting on the <span style="color:blue"><strong>right</strong></span>, move <span style="color:red;"><strong>top-to-bottom</strong></span>, then one move <span style="color:blue"><strong>to the left</strong></span>,</p>
+						<p class="fragment">then <span style="color:darkorange;"><strong>top-to-bottom again</strong></span>, followed by another move <span style="color:blue"><strong>to the left</strong></span>,</p>
+						<p class="fragment">and finally, <span style="color:gold;"><strong>top-to-bottom</strong></span> one last time.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Message Order — Part II</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.17a.up.down.order.png" width="55%" alt="bug problem">  
+						<p><strong>Keeping track</strong> of this messaging order may seem <em>redundant</em>, <em>basic</em>, or even <em>boring</em>,</p>
+						<p class="fragment">and to be sure, you <strong>do not need</strong> to do this all the time!</p>
+						<p class="fragment">But, <strong>knowing how to do it</strong> will save you <em>many hours</em>...</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Message Order — Part II</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/bug.png" width="75%" class="jitter-bug" alt="bug">  
+						<p><em>...searching for <strong>bugs!</strong></em></p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Message Order — Part II</h4>
+					</div>
+					<div class="special-body">
+						<h6>This messaging order is <strong>not true</strong> for signals.</h6>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Message Order — Part II</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.18.greg.signal.rate.png" width="55%" alt="bug problem">  
+						<p>Signal cables carry extremely <strong>fast streams of values</strong>.</p>
+						<p class="fragment">And each MSP object can be imagined as its own <strong>“island” of C code</strong>.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Message Order — Part II</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/garden.hose.jpg" width="55%" alt="bug problem">  
+						<p>Think of signal cables like a <strong>garden hose</strong></p>
+						<p class="fragment">carrying a <strong>continuous flow</strong>, or <strong>stream</strong> of values.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Message Order — Part II</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/garden.hose.jpg" width="55%" alt="bug problem">  
+						<p>Unlike Max’s <strong>controle rate</strong> message cables,</p>
+						<p class="fragment">which may only occasionally carry values,</p>
+						<p class="fragment">MSP’s <strong>signal cables</strong> <em>always</em> have signal values moving quickly through them.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Message Order — Part II</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/garden.hose.jpg" width="55%" alt="bug problem">  
+						<p>Like the garden hose, these cables are either <strong>on</strong> or <strong>off</strong>;</p>
+						<p class="fragment">When they are <strong>off</strong>, nothing is happening,</p>
+						<p class="fragment">but when they are <strong>on</strong>, sample values are moving in a quick flow.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Message Order — Part II</h4>
+					</div>
+					<div class="special-body">
+						<h6>How are <strong>signal cables</strong> and <strong>MSP objects</strong> synchronized?</h6>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Message Order — Part II</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.18.greg.signal.rate.png" width="55%" alt="bug problem">  
+						<p>The short answer is:</p>
+						<p class="fragment"><em>You don’t have to think about the messaging order of signal cables.</em></p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Message Order — Part II</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.18.greg.signal.rate.png" width="55%" alt="bug problem">  
+						<p>Message order is related to the slower <strong>control rate</strong>:</p>
+						<p class="fragment">the “Max” side of MaxMSP.</p>
+						<p class="fragment">This means: only the values traveling through the <span style="color:darkgrey"><strong>gray</strong></span> <strong>control rate</strong> cables.</p>
+					</div>
+				</section>
+
+				<section class="special-slide" data-auto-animate>
+					<div class="special-header">
+						<h4>Message Order — Part II</h4>
+					</div>
+					<div class="special-body">
+						<img data-src="img/patch.18.greg.signal.rate.png" width="55%" alt="bug problem">  
+						<p>What holds the signal cables and MSP objects together in synchronization is different...</p>
+						<p class="fragment">This is controlled by the Max <strong>scheduler</strong> and a number of parameters set in the <strong>Audio Status menu</strong>.</p>
+						<p class="fragment">We will look at these items together another time.</p>
 					</div>
 				</section>
 
